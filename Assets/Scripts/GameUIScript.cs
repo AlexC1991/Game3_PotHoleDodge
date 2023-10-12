@@ -6,28 +6,92 @@ namespace AlexzanderCowell
     {
         [SerializeField] private Text _distanceTextTravelled;
         public static float _distanceNumbers;
+        private float holdingNumber;
+        [SerializeField] private GameObject startButton;
+        [SerializeField] private GameObject _playerCar;
+        [SerializeField] private GameObject distanceText;
+        [SerializeField] private GameObject _gameOverText;
+        [SerializeField] private GameObject _restartButton;
+        [SerializeField] private GameObject _Hearts;
+        public static bool resetGameNow;
+        private bool checkStart;
         private void Start()
         {
+            checkStart = true;
+            BeginPlaying();
             Screen.orientation = ScreenOrientation.Portrait;
+            resetGameNow = false;
         }
 
-        private void Update()
+        private void BeginPlaying()
         {
+            if (checkStart)
+            {
+                startButton.SetActive(true);
+                _playerCar.SetActive(false);
+                distanceText.SetActive(false);
+                _gameOverText.SetActive(false);
+                _restartButton.SetActive(false);
+                _Hearts.SetActive(false);
+                checkStart = false;
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            Debug.Log(holdingNumber);
+
             if (CarMovement._carIsMoving)
             { 
                 _distanceNumbers += MovingSpeedGlobalScript.dodgeItemMovingSpeed * Time.deltaTime;
                 _distanceTextTravelled.text = "Distance Travelled " + "\n" + _distanceNumbers.ToString("0");
 
-                if (_distanceNumbers == 60 || _distanceNumbers == 120 || _distanceNumbers == 180 ||
-                    _distanceNumbers == 240)
+                if (_distanceNumbers > 30 && _distanceNumbers < 30.02f)
                 {
-                    DodgeItemMovement.increaseDodgeSpeed = true;
-                    LineandBushMovement.increaseLineSpeed = true;
-                    LineSpawner.increaseLineSpawnerSpeed = true;
-                    SpawnerScript.increaseSpawnerSpeed = true;
+                    SpeedChange();
+                    holdingNumber = _distanceNumbers * 2;  
                 }
-                
+                else if (_distanceNumbers >= holdingNumber - 0.2f && _distanceNumbers <= holdingNumber + 0.2f && holdingNumber > 1)
+                {
+                    SpeedChange();
+                    holdingNumber = _distanceNumbers * 2;
+                }
             }
         }
+
+        private void Update()
+        {
+            if (CarMovement._flickerCount == 4)
+            {
+                distanceText.SetActive(true);
+                _Hearts.SetActive(true);
+            }
+            
+            if (HealthScript._health == -1)
+            {
+                CarMovement._carIsMoving = false;
+                _gameOverText.SetActive(true);
+                _restartButton.SetActive(true);
+                _playerCar.SetActive(false);
+            }
+        }
+
+        private void SpeedChange()
+        {
+            MovingSpeedGlobalScript.increaseSpeeds = true;
+        }
+        
+        public void StartTheGame()
+        {
+            CarMovement._carIsMoving = true;
+            startButton.SetActive(false);
+            _playerCar.SetActive(true);
+        }
+
+        public void ResetGameButton()
+        {
+            resetGameNow = true;
+        }
     }
+    
 }

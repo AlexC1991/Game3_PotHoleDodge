@@ -5,9 +5,8 @@ namespace AlexzanderCowell
     {
         private float currentSpeed;
         private Vector3 currentPosition;
-        public static bool increaseLineSpeed;
 
-        private void Awake()
+        private void Start()
         {
             currentPosition = transform.position;
         }
@@ -24,17 +23,6 @@ namespace AlexzanderCowell
         {
             currentPosition.y -= MovingSpeedGlobalScript.lineandBushMovingSpeed * Time.fixedDeltaTime;
             transform.position = currentPosition;
-        }
-
-        private void Update()
-        {
-            Debug.Log("Line Speed: " + MovingSpeedGlobalScript.lineandBushMovingSpeed);
-            
-            if (increaseLineSpeed)
-            {
-                MovingSpeedGlobalScript.lineandBushMovingSpeed += 0.2f;
-                increaseLineSpeed = false;
-            }
         }
     }
 }

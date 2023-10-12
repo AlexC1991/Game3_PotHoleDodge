@@ -6,7 +6,6 @@ namespace AlexzanderCowell
 
         private float currentSpeed;
         private Vector3 currentPosition;
-        public static bool increaseDodgeSpeed;
         
         private void Start()
         {
@@ -27,15 +26,6 @@ namespace AlexzanderCowell
                 transform.position = currentPosition;
         }
 
-        private void Update()
-        {
-            Debug.Log("Dodge Item Speed: " + MovingSpeedGlobalScript.dodgeItemMovingSpeed);
-            
-            if (increaseDodgeSpeed)
-            {
-                MovingSpeedGlobalScript.dodgeItemMovingSpeed += 0.5f;
-                increaseDodgeSpeed = false;
-            }
-        }
+
     }
 }

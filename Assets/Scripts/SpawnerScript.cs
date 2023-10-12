@@ -9,7 +9,6 @@ namespace AlexzanderCowell
         [SerializeField] private Transform[] whereToSpawn;
         private int whatToSpawn;
         private int whereToSpawnIndex;
-        public static bool increaseSpawnerSpeed;
 
         private void Update()
         {
@@ -19,12 +18,6 @@ namespace AlexzanderCowell
                 whereToSpawnIndex = Random.Range(0, whereToSpawn.Length);
                 Instantiate(itemsToSpawn[whatToSpawn], whereToSpawn[whereToSpawnIndex].position, Quaternion.identity);
                 nextSpawn = Time.time + MovingSpeedGlobalScript.normalSpawningSpeed;
-            }
-
-            if (increaseSpawnerSpeed)
-            {
-                MovingSpeedGlobalScript.normalSpawningSpeed -= 0.5f;
-                increaseSpawnerSpeed = false;
             }
         }
     }

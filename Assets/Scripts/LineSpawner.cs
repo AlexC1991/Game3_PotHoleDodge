@@ -11,9 +11,8 @@ namespace AlexzanderCowell
         private Vector3 currentPosition;
         private Quaternion _rotation;
        [SerializeField] private float startTimer;
-        public static bool increaseLineSpawnerSpeed;
 
-        private void Awake()
+        private void Start()
         {
             MovingSpeedGlobalScript.lineSpawnerSpeed = startTimer;
         }
@@ -26,12 +25,6 @@ namespace AlexzanderCowell
             {
                 Instantiate(itemToSpawn, whereToSpawn.position, Quaternion.identity);
                 startTimer = MovingSpeedGlobalScript.lineSpawnerSpeed;
-            }
-            
-            if (increaseLineSpawnerSpeed)
-            {
-                MovingSpeedGlobalScript.lineSpawnerSpeed -= 0.2f;
-                increaseLineSpawnerSpeed = false;
             }
         }
 

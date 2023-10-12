@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2210559678479389920}
   m_Layer: 0
   m_Name: PotHole 3
-  m_TagString: DestroyThis
+  m_TagString: EnemyObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95401b8c3d2b8434aa05e7f37ae59d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: 1
 --- !u!65 &7523128961843407616
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -119,7 +118,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.24, y: 10.240001, z: 0.2}
+  m_Size: {x: 5.56, y: 5.79, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-2210559678479389920
 Rigidbody:
