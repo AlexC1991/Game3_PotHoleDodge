@@ -19,6 +19,7 @@ namespace AlexzanderCowell
             heartThree.SetActive(true);
             _isHit = false;
             _health = Mathf.Clamp(_health, 3, -1);
+            _health = 3;
         }
         
         private void OnTriggerEnter(Collider other)

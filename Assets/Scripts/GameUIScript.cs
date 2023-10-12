@@ -33,6 +33,11 @@ namespace AlexzanderCowell
                 _gameOverText.SetActive(false);
                 _restartButton.SetActive(false);
                 _Hearts.SetActive(false);
+                _distanceNumbers = 0;
+            }
+
+            if (CarMovement._carIsMoving)
+            {
                 checkStart = false;
             }
         }
@@ -46,7 +51,7 @@ namespace AlexzanderCowell
                 _distanceNumbers += MovingSpeedGlobalScript.dodgeItemMovingSpeed * Time.deltaTime;
                 _distanceTextTravelled.text = "Distance Travelled " + "\n" + _distanceNumbers.ToString("0");
 
-                if (_distanceNumbers > 30 && _distanceNumbers < 30.02f)
+                if (_distanceNumbers > 20 && _distanceNumbers < 20.02f)
                 {
                     SpeedChange();
                     holdingNumber = _distanceNumbers * 2;  
@@ -90,6 +95,7 @@ namespace AlexzanderCowell
 
         public void ResetGameButton()
         {
+            HealthScript._health = 4;
             resetGameNow = true;
         }
     }

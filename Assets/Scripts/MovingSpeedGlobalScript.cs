@@ -31,10 +31,10 @@ namespace AlexzanderCowell
         {
             if (increaseSpeeds)
             {
-                lineandBushMovingSpeed += 0.2f;
-                dodgeItemMovingSpeed += 0.2f;
-                lineSpawnerSpeed -= 0.2f;
-                normalSpawningSpeed -= 0.2f;
+                lineandBushMovingSpeed += 0.4f;
+                dodgeItemMovingSpeed += 0.4f;
+                lineSpawnerSpeed -= 0.3f;
+                normalSpawningSpeed -= 0.4f;
                 increaseSpeeds = false;
             }
         }

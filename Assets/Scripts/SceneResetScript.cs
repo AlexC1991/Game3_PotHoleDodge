@@ -8,7 +8,7 @@ namespace AlexzanderCowell
         {
             if (GameUIScript.resetGameNow)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene("SampleScene");
                 GameUIScript.resetGameNow = false;
             }
         }

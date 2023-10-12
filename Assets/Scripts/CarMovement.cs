@@ -43,14 +43,28 @@ public class CarMovement : MonoBehaviour
         
         if (_startthisGameNow)
         {
-            _position = Input.mousePosition;
+                if (Input.touchCount > 0)
+                {
+                    Touch touch = Input.GetTouch(0);
+
+                    if (touch.phase == TouchPhase.Moved) 
+                    {
+                        Vector2 pos = touch.position;
+                        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(pos);
+                        pos.x = Mathf.Clamp(worldPosition.x, -1.25f, 1.25f);
+                        transform.position = new Vector3(pos.x, -1.92f, -0.24f);
+                    }
+                }
+           
+                
+                //_position = Input.mousePosition;
             
-            if (_position.x > 0 || _position.x < 0)
-            {
-                Vector2 worldPosition = Camera.main.ScreenToWorldPoint(_position);
-                _position.x = Mathf.Clamp(worldPosition.x, -1.25f, 1.25f);
-                transform.position = new Vector3(_position.x,-1.92f, -0.24f);
-            }
+            //if (_position.x > 0 || _position.x < 0)
+            //{
+               // Vector2 worldPosition = Camera.main.ScreenToWorldPoint(_position);
+                //_position.x = Mathf.Clamp(worldPosition.x, -1.25f, 1.25f);
+                
+            //}
         }
     }
 
